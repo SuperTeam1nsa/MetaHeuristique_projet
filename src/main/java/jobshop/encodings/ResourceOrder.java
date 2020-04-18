@@ -2,12 +2,16 @@ package jobshop.encodings;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.stream.IntStream;
 
 import jobshop.Encoding;
 import jobshop.Instance;
 import jobshop.Schedule;
-//NB: I code alone all this class, without using the given one (later), including the toSchedule and RessourceOrder(Schedule) methods
+//NB: I code alone all this class, without using the given one (later)including ResourceOrder(Schedule schedule) and 
 public class ResourceOrder extends Encoding {
+	// for each machine m, jobs[m] is an array of tasks to be
+    // executed on this machine in the same order
 	// (jobs, taches)=Task par machine #matrice
 	public final Task[][] jobs;
 	private int[] orderNumberMachine;
@@ -18,7 +22,7 @@ public class ResourceOrder extends Encoding {
 		orderNumberMachine=new int[instance.numMachines];
 		Arrays.fill(orderNumberMachine, 0);
 	}
-	
+//mine
 	public ResourceOrder(Schedule sched) {
 		super(sched.pb);
 		//Tableau [machine][ordre sur la machine]=task
@@ -32,7 +36,26 @@ public class ResourceOrder extends Encoding {
 		Arrays.sort(jobs[m], new Comparateur(sched));
 		}
 	}
-	/** Creates an exact copy of this resource order. */
+	  /*[given] Creates a resource order from a schedule. 
+    public ResourceOrder(Schedule schedule)
+    {
+        super(schedule.pb);
+        Instance pb = schedule.pb;
+        this.jobs = new Task[pb.numMachines][];
+        int nextFreeSlot[] = new int[instance.numMachines];
+        for(int m = 0 ; m<schedule.pb.numMachines ; m++) {
+            final int machine = m;
+            // for thi machine, find all tasks that are executed on it and sort them by their start time
+            jobs[m] =
+                    IntStream.range(0, pb.numJobs) // all job numbers
+                            .mapToObj(j -> new Task(j, pb.task_with_machine(j, machine))) // all tasks on this machine (one per job)
+                            .sorted(Comparator.comparing(t -> schedule.startTime(t.job, t.task))) // sorted by start time
+                            .toArray(Task[]::new); // as new array and store in tasksByMachine
+            // indicate that all tasks have been initialized for machine m
+            nextFreeSlot[m] = instance.numJobs;
+        }
+    }*/
+	/* Creates an exact copy of this resource order. */
     public ResourceOrder copy() {
         return new ResourceOrder(this.toSchedule());
     }
@@ -53,7 +76,7 @@ public class ResourceOrder extends Encoding {
 		orderNumberMachine[machine]++;
 	}
 	/*
-	 * Attribue chaque tâche à une ressource (machine) sans appliquer d'ordre
+	 * Attribue chaque tâche à une ressource (machine) sans appliquer d'ordre en dehors du respect des contraintes
 	 */
 public void autoFillNotOptimalOrder() {
 	//Cpt est le nombre de tâches déjà affecté à chaque machine (index)

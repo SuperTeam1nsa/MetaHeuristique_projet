@@ -38,4 +38,8 @@ public final class Task {
     public String toString() {
         return "(" + job +", " + task + '}';
     }
+
+	public Task copy() {
+		return new Task(job, task);
+	}
 }

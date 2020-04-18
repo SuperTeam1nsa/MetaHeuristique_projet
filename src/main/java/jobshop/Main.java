@@ -33,6 +33,7 @@ public class Main {
         solvers.put("EST_LPT", new GloutonTime("LPT"));
         solvers.put("EST_SRPT", new GloutonTime("SRPT"));
         solvers.put("EST_LRPT", new GloutonTime("LRPT")); 
+        solvers.put("descentSolver", new DescentSolver()); 
         // add new solvers here
     }
 

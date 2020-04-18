@@ -11,7 +11,15 @@ public class Schedule {
     // start times of each job and task
     // times[j][i] is the start time of task (j,i) : i^th task of the j^th job
     final int[][] times;
-
+    public String toString() {
+    	String txt="\n";
+    	for(int j=0; j < times.length;j++) {
+    		for(int i=0; i <times[j].length;i++)
+    			txt+=" ("+j+','+i+"):"+times[j][i]+" |";
+    		txt+="\t\n";
+    	}
+    	return txt;
+    }
     public Schedule(Instance pb, int[][] times) {
         this.pb = pb;
         this.times = new int[pb.numJobs][];
