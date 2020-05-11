@@ -20,7 +20,10 @@ public class GloutonTime  implements Solver  {
 	@Override
 	public Result solve(Instance instance, long deadline) {
 		   ResourceOrder sol = new ResourceOrder(instance);
+		   ArrayList<Task> candidates =new ArrayList<Task>();
 		   //tas #array auto ordonné
+		   //https://javachannel.org/posts/priorityqueue-and-mutable-item-behavior/
+		   //=> vider et reremplir le tas à chaque fois #sinon mal classé
 		   PriorityQueue<Task> doable=new PriorityQueue<Task>(instance.numMachines,new ComparateurGloutonTime(this));
 		   //tâches déjà planifiées
 		   ArrayList<Task> scheduled=new ArrayList<Task>();
@@ -37,7 +40,7 @@ public class GloutonTime  implements Solver  {
 					//si on n'a pas déjà traité ni ajouté la tâche, et que c'est la première 
 					//ou qu'on a fais la/les tâches précédentes (par recursivité sur la contrainte checker la précédente revient à checker toutes les précédentes)
 					//alors on ajoute la tâche courante dans les tâches réalisables
-					if(!scheduled.contains(task) && !doable.contains(task) && (t==0 || scheduled.contains(new Task(j,t-1)))) {
+					if(!scheduled.contains(task)  && (t==0 || scheduled.contains(new Task(j,t-1)))) {
 						//Pour chaque tache d'un job on détermine quelle machine est utilisée
 						int m =instance.machine(task.job, task.task);	
 						if(t==0) {
@@ -55,22 +58,16 @@ public class GloutonTime  implements Solver  {
 		   }
 		   //best element
 		   Task t_opti=null;
-		   ArrayList<Task> candidates =new ArrayList<Task>();
 		   //PriorityQueue<Task> candidates=new PriorityQueue<Task>(instance.numJobs,new GeneralComparator( methode,instance));
+		   //est-ce que le tas reste ordonné quand la valeur des éléments change ?
 		   Task origin=doable.poll();
 		   candidates.add(origin);
 		   int best=startTimes[origin.job][origin.task];
-		   Task tother;
-		   //cas d'éggalité entre les jobs dans les dates de début
-		   while(doable.peek()!=null) {
-			   tother=doable.peek();
-			   if(best==startTimes[tother.job][tother.task]) {
+		   //cas d'égalité entre les jobs dans les dates de début
+		   while(doable.peek()!=null && startTimes[doable.peek().job][doable.peek().task]==best) {
 				   candidates.add(doable.poll());
-			   }else {
-				   break;
-			   }
 		   }
-		   //rq: utiliser un tas ici n'améliore pas les perfs (cf GeneralCOmparator)
+		   //rq: utiliser un tas pour SPT etc. n'améliore pas les perfs (cf GeneralCOmparator)
 		   if(methode.equals("SPT")){
 			   long shortest= (long)Integer.MAX_VALUE+1;
 			   for(Task t:candidates) {
@@ -108,17 +105,17 @@ public class GloutonTime  implements Solver  {
 				   }
 			   }
 	       }
-		   candidates.remove(t_opti);
+		   candidates.clear();
 		   //on remet les éléments candidats non selectionne dans le tas (poll les a enleve)
-		   for(Task t:candidates) {
+		  /* for(Task t:candidates) {
 			   doable.add(t);
-		   }
+		   }*/
+		   doable.clear();
 		    //Pour chaque tache d'un job on détermine quelle machine est utilisée
 			int m =instance.machine(t_opti.job, t_opti.task);		
 			machine_early[m]+=instance.duration(t_opti.job, t_opti.task);
 			//on lui affecte la tâche
 			sol.manualFill(m, t_opti.job, t_opti.task);
-			doable.remove(t_opti);
 			scheduled.add(t_opti);
 	       }//while
 	       return new Result(instance, sol.toSchedule(), Result.ExitCause.Blocked);
