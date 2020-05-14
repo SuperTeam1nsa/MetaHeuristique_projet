@@ -91,12 +91,15 @@ public class DescentSolver implements Solver {
     	//GloutonTime solv=new GloutonTime("LRPT");
     	//current=new ResourceOrder(solv.solve(instance, deadline).schedule);
     	//ordre simple => 2 fois + rapide que de faire tourner un solver avant, meilleure solution en moyenne
-    	current=new ResourceOrder(instance);
-    	current.autoFillNotOptimalOrder();
+    	//current=new ResourceOrder(new BasicSolver().solve(instance, deadline).schedule);
+    	//ou
+    	current=new ResourceOrder(new GloutonTime("LRPT").solve(instance, deadline).schedule);//ou Glouton
+    	//ou
+    	//current=new ResourceOrder(instance);current.autoFillNotOptimalOrder();
     	best=current.copy();
     	int old_bestmakespan;
+		bestmakespan=best.toSchedule().makespan();
     	do{
-    		 bestmakespan=best.toSchedule().makespan();
     		 old_bestmakespan= bestmakespan;
     		 //on extrait chaque block du chemin critique et pour chacun on teste tous les swap possibles, si le swap améliore sa solution devient la meilleure
     		 blocksOfCriticalPath(best)
@@ -107,7 +110,7 @@ public class DescentSolver implements Solver {
     		 				int currentmakespan =current.toSchedule().makespan();
     		 				if(currentmakespan<bestmakespan) {
     		 					bestmakespan=currentmakespan;
-    		 					best=current.copy();
+    		 					best=current;
     		 				}
     		 			});
     		 		});

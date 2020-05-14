@@ -110,9 +110,10 @@ public class TabouSolver implements Solver {
     			Arrays.fill(tabou[i][j],0);
     	//GloutonTime solv=new GloutonTime("LRPT");
     	//current=new ResourceOrder(solv.solve(instance, deadline).schedule);
-    	//ordre simple => 2 fois + rapide que de faire tourner un solver avant, meilleure solution en moyenne
-    	current=new ResourceOrder(instance);
-    	current.autoFillNotOptimalOrder();
+    	//ordre simple => 2 fois + rapide que de faire tourner un solver avant, bonne solution
+    	current=new ResourceOrder(new BasicSolver().solve(instance, deadline).schedule);
+       //new ResourceOrder(instance);
+    	//current.autoFillNotOptimalOrder();
     	best=current.copy();
     	bestMakespan=best.toSchedule().makespan();
     	k=0;
@@ -135,8 +136,8 @@ public class TabouSolver implements Solver {
 					    		 					bestSwapNeighbors=new Swap(swap);
 					    		 					bestNeighbors=neighbors.copy();
 					    		 				}
-					    		 				//tabou mais améliore le meilleur
-			    		 				}else if(neighborsMakespan<bestMakespan) {
+					    		 				//tabou mais améliore le meilleur (meilleur que le meilleur voisin aussi)
+			    		 				}else if(neighborsMakespan<bestMakespan && neighborsMakespan <bestNeighborMakespan) {
 			    		 					bestNeighborMakespan=neighborsMakespan;
 			    		 					bestSwapNeighbors=new Swap(swap);
 			    		 					bestNeighbors=neighbors.copy();

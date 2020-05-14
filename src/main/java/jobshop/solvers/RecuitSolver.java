@@ -106,8 +106,9 @@ public class RecuitSolver implements Solver {
         int bestMakespan;
         int k =0;
     	int T= temperature_ini;
-    	current=new ResourceOrder(instance);
-    	current.autoFillNotOptimalOrder();
+    	current=new ResourceOrder(new TabouSolver(800,20)/*BasicSolver()Glouton("LPT")*/.solve(instance, deadline).schedule);
+    	//new ResourceOrder(instance);
+    	//current.autoFillNotOptimalOrder();
     	best=current.copy();
     	bestMakespan=best.toSchedule().makespan();
     	do{

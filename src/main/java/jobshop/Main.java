@@ -38,8 +38,8 @@ public class Main {
         solvers.put("EST_SRPT", new GloutonTime("SRPT"));
         solvers.put("EST_LRPT", new GloutonTime("LRPT")); 
         solvers.put("descentSolver", new DescentSolver()); 
-        solvers.put("TabouSolver", new TabouSolver(100000,20)); 
-        solvers.put("RecuitSolver", new RecuitSolver(100000,100,175)); //100 175 1s 
+        solvers.put("TabouSolver", new TabouSolver(800,20)); 
+        solvers.put("RecuitSolver", new RecuitSolver(100000000,100,175)); //100 175 1s 
         // add new solvers here
     }
 
@@ -127,7 +127,7 @@ public class Main {
                     long deadline = System.currentTimeMillis() + solveTimeMs;
                     Result result = solver.solve(instance, deadline);
                     long runtime = System.currentTimeMillis() - start;
-
+                    System.gc();
                     if(!result.schedule.isValid()) {
                         System.err.println("ERROR: solver returned an invalid schedule");
                         System.exit(1);

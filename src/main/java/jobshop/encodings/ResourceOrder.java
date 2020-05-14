@@ -3,6 +3,7 @@ package jobshop.encodings;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Optional;
 import java.util.stream.IntStream;
 
 import jobshop.Encoding;
@@ -36,8 +37,8 @@ public class ResourceOrder extends Encoding {
 		Arrays.sort(jobs[m], new Comparateur(sched));
 		}
 	}
-	  /*[given] Creates a resource order from a schedule. 
-    public ResourceOrder(Schedule schedule)
+	  //[given] Creates a resource order from a schedule. 
+    /*public ResourceOrder(Schedule schedule)
     {
         super(schedule.pb);
         Instance pb = schedule.pb;
@@ -113,8 +114,7 @@ public void autoFillNotOptimalOrder() {
 		}
 		return txt;
 	}
-
-
+//mine
 	@Override
 	public Schedule toSchedule() {
 		//System.out.print(this.toString());
@@ -176,6 +176,59 @@ public void autoFillNotOptimalOrder() {
 
     return new Schedule(instance, startTimes);
 	}
+	//given 
+	/* @Override
+	    public Schedule toSchedule() {
+	        // indicate for each task that have been scheduled, its start time
+	        int [][] startTimes = new int [instance.numJobs][instance.numTasks];
+
+	        // for each job, how many tasks have been scheduled (0 initially)
+	        int[] nextToScheduleByJob = new int[instance.numJobs];
+
+	        // for each machine, how many tasks have been scheduled (0 initially)
+	        int[] nextToScheduleByMachine = new int[instance.numMachines];
+
+	        // for each machine, earliest time at which the machine can be used
+	        int[] releaseTimeOfMachine = new int[instance.numMachines];
+
+
+	        // loop while there remains a job that has unscheduled tasks
+	        while(IntStream.range(0, instance.numJobs).anyMatch(m -> nextToScheduleByJob[m] < instance.numTasks)) {
+
+	            // selects a task that has noun scheduled predecessor on its job and machine :
+	            //  - it is the next to be schedule on a machine
+	            //  - it is the next to be scheduled on its job
+	            // if there is no such task, we have cyclic dependency and the solution is invalid
+	            Optional<Task> schedulable =
+	                    IntStream.range(0, instance.numMachines) // all machines ...
+	                    .filter(m ->nextToScheduleByMachine[m] < instance.numJobs) // ... with unscheduled jobs
+	                    .mapToObj(m -> this.jobs[m][nextToScheduleByMachine[m]]) // tasks that are next to schedule on a machine ...
+	                    .filter(task -> task.task == nextToScheduleByJob[task.job])  // ... and on their job
+	                    .findFirst(); // select the first one if any
+
+	            if(schedulable.isPresent()) {
+	                // we found a schedulable task, lets call it t
+	                Task t = schedulable.get();
+	                int machine = instance.machine(t.job, t.task);
+
+	                // compute the earliest start time (est) of the task
+	                int est = t.task == 0 ? 0 : startTimes[t.job][t.task-1] + instance.duration(t.job, t.task-1);
+	                est = Math.max(est, releaseTimeOfMachine[instance.machine(t)]);
+	                startTimes[t.job][t.task] = est;
+
+	                // mark the task as scheduled
+	                nextToScheduleByJob[t.job]++;
+	                nextToScheduleByMachine[machine]++;
+	                // increase the release time of the machine
+	                releaseTimeOfMachine[machine] = est + instance.duration(t.job, t.task);
+	            } else {
+	                // no tasks are schedulable, there is no solution for this resource ordering
+	                return null;
+	            }
+	        }
+	        // we exited the loop : all tasks have been scheduled successfully
+	        return new Schedule(instance, startTimes);
+	    }*/
 
 
 }
