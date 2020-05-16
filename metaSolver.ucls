@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="jobshop.solvers.DescentSolver.Swap" project="MetaHeuristique_projet" 
     file="/MetaHeuristique_projet/src/main/java/jobshop/solvers/DescentSolver.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="524" y="809"/>    
+    <position height="-1" width="-1" x="616" y="821"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="jobshop.solvers.DescentSolver.Block" project="MetaHeuristique_projet" 
     file="/MetaHeuristique_projet/src/main/java/jobshop/solvers/DescentSolver.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="349" y="803"/>    
+    <position height="-1" width="-1" x="346" y="825"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="jobshop.solvers.DescentSolver" project="MetaHeuristique_projet" 
     file="/MetaHeuristique_projet/src/main/java/jobshop/solvers/DescentSolver.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="452" y="494"/>    
+    <position height="-1" width="-1" x="561" y="627"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -49,7 +49,7 @@
   <class id="6" language="java" name="jobshop.solvers.GloutonAleatoire" project="MetaHeuristique_projet" 
     file="/MetaHeuristique_projet/src/main/java/jobshop/solvers/GloutonAleatoire.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-281" y="104"/>    
+    <position height="-1" width="-1" x="-281" y="93"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -76,7 +76,7 @@
   </class>  
   <class id="9" language="java" name="jobshop.solvers.TabouSolver.Block" project="MetaHeuristique_projet" 
     file="/MetaHeuristique_projet/src/main/java/jobshop/solvers/TabouSolver.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="347" y="804"/>    
+    <position height="-1" width="-1" x="346" y="824"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -86,7 +86,7 @@
   <class id="10" language="java" name="jobshop.solvers.ComparateurGloutonTime" project="MetaHeuristique_projet" 
     file="/MetaHeuristique_projet/src/main/java/jobshop/solvers/ComparateurGloutonTime.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="211" y="104"/>    
+    <position height="-1" width="-1" x="212" y="87"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -104,7 +104,7 @@
   </class>  
   <class id="12" language="java" name="jobshop.solvers.GloutonTime" project="MetaHeuristique_projet" 
     file="/MetaHeuristique_projet/src/main/java/jobshop/solvers/GloutonTime.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="212" y="294"/>    
+    <position height="-1" width="-1" x="211" y="256"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -113,7 +113,7 @@
   </class>  
   <class id="13" language="java" name="jobshop.solvers.BasicSolver" project="MetaHeuristique_projet" 
     file="/MetaHeuristique_projet/src/main/java/jobshop/solvers/BasicSolver.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="106" width="197" x="-150" y="51"/>    
+    <position height="106" width="197" x="-137" y="36"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -122,7 +122,7 @@
   </class>  
   <class id="14" language="java" name="jobshop.solvers.Glouton" project="MetaHeuristique_projet" 
     file="/MetaHeuristique_projet/src/main/java/jobshop/solvers/Glouton.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="142" width="242" x="-160" y="213"/>    
+    <position height="142" width="242" x="-158" y="176"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -131,58 +131,85 @@
   </class>  
   <class id="15" language="java" name="jobshop.solvers.RandomSolver" project="MetaHeuristique_projet" 
     file="/MetaHeuristique_projet/src/main/java/jobshop/solvers/RandomSolver.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="158" width="202" x="-377" y="210"/>    
+    <position height="158" width="202" x="-380" y="172"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <nesting id="16">    
+  <class id="16" language="java" name="jobshop.solvers.PopulationComparateur" project="MetaHeuristique_projet" 
+    file="/MetaHeuristique_projet/src/main/java/jobshop/solvers/PopulationComparateur.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="505" y="85"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="jobshop.solvers.GeneticSolver" project="MetaHeuristique_projet" 
+    file="/MetaHeuristique_projet/src/main/java/jobshop/solvers/GeneticSolver.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="525" y="346"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <nesting id="18">    
     <end type="SOURCE" refId="11"/>    
     <end type="TARGET" refId="9"/>  
   </nesting>  
-  <association id="17">    
+  <association id="19">    
     <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="18" name="glou"/>      
-      <multiplicity id="19" minimum="0" maximum="1"/>    
+      <attribute id="20" name="glou"/>      
+      <multiplicity id="21" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="12" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <nesting id="20">    
+  <nesting id="22">    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="7"/>  
   </nesting>  
-  <nesting id="21">    
+  <nesting id="23">    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="8"/>  
   </nesting>  
-  <nesting id="22">    
+  <association id="24">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="25" name="comparateur"/>      
+      <multiplicity id="26" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="27">    
     <end type="SOURCE" refId="11"/>    
     <end type="TARGET" refId="5"/>  
   </nesting>  
-  <association id="23">    
+  <association id="28">    
     <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="24" name="bestSwapNeighbors"/>      
-      <multiplicity id="25" minimum="0" maximum="1"/>    
+      <attribute id="29" name="bestSwapNeighbors"/>      
+      <multiplicity id="30" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <nesting id="26">    
+  <nesting id="31">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="2"/>  
   </nesting>  
-  <association id="27">    
+  <association id="32">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="28" name="swaps"/>      
-      <multiplicity id="29" minimum="0" maximum="2147483647"/>    
+      <attribute id="33" name="swaps"/>      
+      <multiplicity id="34" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <nesting id="30">    
+  <nesting id="35">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="1"/>  
   </nesting>  

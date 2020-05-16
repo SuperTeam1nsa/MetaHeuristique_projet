@@ -5,6 +5,8 @@ import jobshop.Instance;
 import jobshop.Schedule;
 
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.stream.IntStream;
 
 /** Représentation par numéro de job. */
 public class JobNumbers extends Encoding {
@@ -21,8 +23,14 @@ public class JobNumbers extends Encoding {
         jobs = new int[instance.numJobs * instance.numMachines];
         Arrays.fill(jobs, -1);
     }
+    public JobNumbers copy() {
+    	JobNumbers copie=new JobNumbers(instance);
+    	for(int i=0;i<instance.numJobs * instance.numMachines;i++)
+    		copie.jobs[copie.nextToSet++] = jobs[i];
+    	return copie;
+    }
     //MY METHOD TO GET THE JOB NUMBER FROM SCHEDULE (before the version given)
-    public JobNumbers(Schedule sched) {
+   /* public JobNumbers(Schedule sched) {
         super(sched.pb);
         //tableau des tâches auxiliaire
         Task tab[] =new Task[instance.numJobs *instance.numTasks];//R: numTask is supposed to be egal to numMachines
@@ -42,9 +50,9 @@ public class JobNumbers extends Encoding {
     	}
         //pour être cohérent avec la construction à la main/ avoir un beau print
         nextToSet=(instance.numJobs *instance.numTasks);
-    }
-    /* the given one 
-     *  public JobNumbers(Schedule schedule) {
+    }*/
+    // the given one 
+       public JobNumbers(Schedule schedule) {
         super(schedule.pb);
 
         this.jobs = new int[instance.numJobs * instance.numTasks];
@@ -67,7 +75,7 @@ public class JobNumbers extends Encoding {
             this.jobs[nextToSet++] = next.job;
             nextOnJob[next.job] += 1;
         }
-    }*/
+    }
 
     @Override
     public Schedule toSchedule() {

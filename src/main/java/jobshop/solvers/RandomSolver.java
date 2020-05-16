@@ -33,7 +33,7 @@ public class RandomSolver implements Solver {
     }
 
     /** Simple Fisher–Yates array shuffling */
-    private static void shuffleArray(int[] array, Random random)
+    static void shuffleArray(int[] array, Random random)
     {
         int index;
         for (int i = array.length - 1; i > 0; i--)

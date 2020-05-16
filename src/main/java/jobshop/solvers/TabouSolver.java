@@ -156,7 +156,7 @@ public class TabouSolver implements Solver {
     	if(k == max_iter)
     		return new Result(instance, best.toSchedule(),Result.ExitCause.Blocked);
     	else {
-    		System.out.printf("k:%d",k);
+     		System.out.printf("k:%d",k);
     		return new Result(instance, best.toSchedule(),Result.ExitCause.Timeout);
     	}
     }

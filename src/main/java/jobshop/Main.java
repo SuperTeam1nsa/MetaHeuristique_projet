@@ -40,6 +40,7 @@ public class Main {
         solvers.put("descentSolver", new DescentSolver()); 
         solvers.put("TabouSolver", new TabouSolver(800,20)); 
         solvers.put("RecuitSolver", new RecuitSolver(100000000,100,175)); //100 175 1s 
+        solvers.put("genetique", new GeneticSolver(100,10000000,100, 1f,1)); //80
         // add new solvers here
     }
 
