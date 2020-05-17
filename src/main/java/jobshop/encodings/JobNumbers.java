@@ -30,7 +30,7 @@ public class JobNumbers extends Encoding {
     	return copie;
     }
     //MY METHOD TO GET THE JOB NUMBER FROM SCHEDULE (before the version given)
-   /* public JobNumbers(Schedule sched) {
+    public JobNumbers(Schedule sched) {
         super(sched.pb);
         //tableau des tâches auxiliaire
         Task tab[] =new Task[instance.numJobs *instance.numTasks];//R: numTask is supposed to be egal to numMachines
@@ -50,8 +50,8 @@ public class JobNumbers extends Encoding {
     	}
         //pour être cohérent avec la construction à la main/ avoir un beau print
         nextToSet=(instance.numJobs *instance.numTasks);
-    }*/
-    // the given one 
+    }
+    /* the given one 
        public JobNumbers(Schedule schedule) {
         super(schedule.pb);
 
@@ -75,7 +75,7 @@ public class JobNumbers extends Encoding {
             this.jobs[nextToSet++] = next.job;
             nextOnJob[next.job] += 1;
         }
-    }
+    }*/
 
     @Override
     public Schedule toSchedule() {

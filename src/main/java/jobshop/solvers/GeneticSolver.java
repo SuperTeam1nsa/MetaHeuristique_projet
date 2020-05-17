@@ -220,18 +220,18 @@ public class GeneticSolver implements Solver {
     		}
     		//System.out.print("b:"+bestM);
     		//tous les enfants et les meilleurs parents
-    		int k=(taillePopulation-taillePopEnfant);
+    		/*int k=(taillePopulation-taillePopEnfant);
     		for(int i=0; i< taillePopEnfant;i++) {
     			population.set(k, popEnfant.get(i));
     			k++;
-    		}
+    		}*/
     		//k meilleurs parents et taillePopEnfant/2 meilleur enfants (50/50 si autant enfants que de parents)
-    		/*popEnfant.sort(comparateur);
+    		popEnfant.sort(comparateur);
     		int k=(taillePopulation-taillePopEnfant/2);
     		for(int i=0; i< taillePopEnfant/2;i++) {
     			population.set(k, popEnfant.get(i));
     			k++;
-    		}*/
+    		}
     		//meilleurs only 
     		/*
     		ArrayList<JobNumbers> all =new ArrayList<JobNumbers>(taillePopEnfant+taillePopulation);

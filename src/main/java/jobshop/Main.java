@@ -38,9 +38,9 @@ public class Main {
         solvers.put("EST_SRPT", new GloutonTime("SRPT"));
         solvers.put("EST_LRPT", new GloutonTime("LRPT")); 
         solvers.put("descentSolver", new DescentSolver()); 
-        solvers.put("TabouSolver", new TabouSolver(800,20)); 
+        solvers.put("TabouSolver", new TabouSolver(800000000,20)); 
         solvers.put("RecuitSolver", new RecuitSolver(100000000,100,175)); //100 175 1s 
-        solvers.put("genetique", new GeneticSolver(100,10000000,100, 1f,1)); //80
+        solvers.put("genetique", new GeneticSolver(50,10000000,40, 1f,4)); //80
         // add new solvers here
     }
 
