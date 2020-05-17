@@ -2,7 +2,9 @@ package jobshop.solvers;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import jobshop.Instance;
 import jobshop.Result;
@@ -105,6 +107,8 @@ public class TabouSolver implements Solver {
     @Override
     public Result solve(Instance instance, long deadline) {
     	int[][][] tabou =new int[instance.numMachines][instance.numJobs*instance.numTasks][instance.numJobs*instance.numTasks];
+    	//ou hashMap (pas de gain)
+    	//HashMap<Integer,Integer> st=new HashMap<Integer,Integer>();
     	for(int i=0;i<instance.numMachines;i++)
     		for(int j=0;j<instance.numJobs*instance.numTasks;j++)
     			Arrays.fill(tabou[i][j],0);
@@ -130,7 +134,10 @@ public class TabouSolver implements Solver {
 			    		 				swap.applyOn(neighbors);
 			    		 				int neighborsMakespan =neighbors.toSchedule().makespan();
 			    		 				//pas tabou 
-			    		 				if(k>=tabou[swap.machine][swap.t1][swap.t2]) {
+			    		 				//variante HashMap
+			    		 				//if(st.get(Objects.hash(current.jobs[swap.machine][swap.t1],current.jobs[swap.machine][swap.t2])) == null 
+	    		 						//|| k>st.get(Objects.hash(current.jobs[swap.machine][swap.t1],current.jobs[swap.machine][swap.t2]))) {
+			    		 				if(k>tabou[swap.machine][swap.t1][swap.t2]){
 					    		 				if(neighborsMakespan<bestNeighborMakespan) {
 					    		 					bestNeighborMakespan=neighborsMakespan;
 					    		 					bestSwapNeighbors=new Swap(swap);
@@ -144,6 +151,13 @@ public class TabouSolver implements Solver {
 			    		 				}
     		 			});
     		 		});
+    		// Variante HashMap par task
+    		 /*Task a=current.jobs[bestSwapNeighbors.machine][bestSwapNeighbors.t2];
+    		 Task b=current.jobs[bestSwapNeighbors.machine][bestSwapNeighbors.t1];
+    		 int hash=Objects.hash(a, b);
+    		 st.put(hash, k+time_tabou);*/
+    		 //rq:par position et par machine, on swap que les 2 premières ou les deux dernières + l'ordre du swap est conservé #1 2 ne deviendra jamais 2 1
+    		 //donc l'inversion des tâches...revient à refaire la même permutation (car par position)
     		 tabou[bestSwapNeighbors.machine][bestSwapNeighbors.t1][bestSwapNeighbors.t2]=k+time_tabou;
     		 current=bestNeighbors;//.copy();
     		 if(bestNeighborMakespan < bestMakespan) {
